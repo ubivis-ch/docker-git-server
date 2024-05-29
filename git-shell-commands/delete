@@ -1,0 +1,38 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+    echo "Usage: delete <repo path>"
+    exit 1
+fi
+
+. /env.sh
+
+repo_paths=`find $GIT_REPO_ROOT -type d -name '*.git'`
+
+to_delete_repo=$1
+
+raw_to_delete_repo_path="$GIT_REPO_ROOT/$to_delete_repo"
+to_delete_repo_path=`realpath -m "$raw_to_delete_repo_path"`
+
+if [ "$raw_to_delete_repo_path" != "$to_delete_repo_path" -o "${to_delete_repo_path:(-4)}" != ".git" ]; then
+    echo "Repository must be in the format \"[<namespace>/]+<repository name>.git\""
+    exit 2
+fi
+
+for repo_path in $repo_paths; do
+    if [ "$repo_path" = "$to_delete_repo_path" ]; then
+        read -p "Are you sure? [y/N] " confirm
+
+        if [ "$confirm" = "y" ]; then
+            rm -rf $to_delete_repo_path
+            exit $?
+        else
+            echo "Delete aborted!"
+            exit 0
+        fi
+    fi
+done
+
+echo "No repository with this name exists"
+exit 3
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "Available commands:"
+echo "  create <repo path>  - Create a new repository"
+echo "  delete <repo path>  - Delete a repository"
+echo "  exit                - Exit"
+echo "  help                - Show available commands"
+echo "  list                - List all repostories"
+

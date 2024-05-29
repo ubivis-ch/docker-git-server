@@ -1,0 +1,14 @@
+. /env.sh
+
+if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+    /usr/bin/git-shell
+else
+    if [ "${SSH_ORIGINAL_COMMAND:0:4}" = "git-" ]; then
+        SSH_UPDATED_COMMAND=$(echo "$SSH_ORIGINAL_COMMAND" | sed -r "s# '/# '$GIT_REPO_ROOT/#")
+
+        /usr/bin/git-shell -c "$SSH_UPDATED_COMMAND"
+    else
+        /usr/bin/git-shell -c "$SSH_ORIGINAL_COMMAND"
+    fi
+fi
+
