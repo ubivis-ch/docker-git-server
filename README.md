@@ -27,7 +27,7 @@ services:
     restart: always
     ports:
       - "2222:22"
-    enviroment:
+    environment:
       - GIT_USER_PASSWORD="[secret]"
       - GIT_AUTHORIZED_KEYS="ssh-rsa [xxxxx ...]"
       - GIT_HOST_HINT="example.org:2222"
@@ -64,7 +64,7 @@ to save them between restarts, otherwise one would always get a warning of a con
 
 ### `/srv/git`
 
-This is where the repositories lie. It wouldn't really make sense if they are not persisted.
+This is where the repositories are stored. It wouldn't really make sense not to persist them.
 
 Usage
 -----
