@@ -15,7 +15,7 @@ raw_new_repo_path="$GIT_REPO_ROOT/$new_repo"
 
 new_repo_path=`realpath -m "$raw_new_repo_path"`
 
-if [ "$raw_new_repo_path" != "$new_repo_path" -o "${new_repo_path:(-4)}" != ".git" ]; then
+if [ "$raw_new_repo_path" != "$new_repo_path" -o "${new_repo_path:(-4)}" != ".git" -o "${new_repo_path:(-5)}" = "/.git" ]; then
     echo "Repository must be in the format \"[<namespace>/]+<repository name>.git\""
     exit 1
 fi
@@ -27,4 +27,17 @@ for repo_path in $repo_paths; do
     fi
 done
 
-git init --bare $new_repo_path
+git init --bare $new_repo_path > /dev/null
+
+# Creates a first commit to omit the empty repository warning and problems with the default branch (that otherwise would
+# fall back to "master" instead of the preferred "main"
+git clone --quiet $new_repo_path /tmp/repo > /dev/null 2>&1
+cd /tmp/repo 
+touch .gitignore 
+git add . 
+git commit --quiet -m "Repository initialization" 
+git push --quiet 
+cd - > /dev/null
+rm -rf /tmp/repo/
+
+

@@ -1,3 +1,7 @@
 [init]
 	defaultBranch = main
 
+[user]
+	name = Git daemon
+	email = git@localhost
+

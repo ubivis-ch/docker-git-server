@@ -1,5 +1,5 @@
-docker-git-server
-=================
+git-server
+==========
 
 Relatively simple Git Server (Git over SSH) based on Alpine Linux and with some administration capabilities to create,
 delete and list repositories.
@@ -23,14 +23,14 @@ Or using Docker Compose (`compose.yaml`):
 services:
 
   git-server:
-    image: ubivis-ch/git-server:latest
+    image: ubivisgmbh/git-server:latest
     restart: always
     ports:
-      - "2222:22"
+      - 2222:22
     environment:
-      - GIT_USER_PASSWORD="[secret]"
-      - GIT_AUTHORIZED_KEYS="ssh-rsa [xxxxx ...]"
-      - GIT_HOST_HINT="example.org:2222"
+      - GIT_USER_PASSWORD=[secret]
+      - "GIT_AUTHORIZED_KEYS=[ssh-rsa xxxxx xxx@xxx]\n[ssh-rsa xxxxx xxx@xxx]"
+      - GIT_HOST_HINT=example.org:2222
     volumes:
       - config:/etc/git
       - data:/srv/git
