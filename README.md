@@ -1,7 +1,7 @@
 git-server
 ==========
 
-Relatively simple Git Server (Git over SSH) based on Alpine Linux and with some administration capabilities to create,
+Relatively simple Git server (Git over SSH) based on Alpine Linux and with some administration capabilities to create,
 delete and list repositories.
 
 It can be accessed using either a password or SSH keys.
@@ -91,9 +91,9 @@ There are a few design decisions that are discussed now:
 
 ### No data besides the repositories
 
-I didn't want to add features to this server that require addtional (meta)data like the bigger Git servers tend to have.
-This means that there are a lot of features missing compared to Github, GitLab, Bitbucket, Gitea, Gogs, etc. Be aware of
-that.
+I didn't want to add features to this server that require additional (meta)data like the bigger Git servers tend to 
+have. This means that there are a lot of features missing compared to Github, GitLab, Bitbucket, Gitea, Gogs, etc. Be 
+aware of that.
 
 I tried to make everything as simple as possible for both movability and backup/restore of repositories.
 
@@ -115,6 +115,17 @@ instead of
     $ git clone ssh://git@example.org:2222/srv/git/<namespace>/<repository>.git
 
 which from an aesthetical point of view was important to me :-).
+
+Development / Bugs
+------------------
+
+Development takes place on Github:
+
+https://gituhb.com/ubivis-ch/docker-git-server
+
+Please report any issues to:
+
+https://gituhb.com/ubivis-ch/docker-git-server/issues
 
 Future
 ------
