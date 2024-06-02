@@ -121,11 +121,11 @@ Development / Bugs
 
 Development takes place on Github:
 
-https://gituhb.com/ubivis-ch/docker-git-server
+https://github.com/ubivis-ch/docker-git-server
 
 Please report any issues to:
 
-https://gituhb.com/ubivis-ch/docker-git-server/issues
+https://github.com/ubivis-ch/docker-git-server/issues
 
 Future
 ------
