@@ -23,5 +23,7 @@ COPY docker-entrypoint.sh /
 
 COPY git-shell-rel-path /
 
+EXPOSE 22
+
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD [ "/usr/sbin/dropbear", "-R", "-g", "-F", "-E", "-j", "-k", "-p 2222", "-m", "-c /git-shell-rel-path" ]
+CMD [ "/usr/sbin/dropbear", "-R", "-g", "-F", "-E", "-j", "-k", "-m", "-c /git-shell-rel-path" ]
