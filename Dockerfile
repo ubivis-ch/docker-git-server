@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-ARG GIT_VERSION=2.45.1-r0
+ARG GIT_VERSION=2.45.2-r0
 
 ARG GIT_REPO_ROOT=/srv/git
 
