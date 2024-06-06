@@ -7,8 +7,10 @@ fi
 
 . /env.sh
 
-repos=`find $GIT_REPO_ROOT -type d -name '*.git' | cut -d '/' -f 4-`
+repos=`find $GIT_REPO_ROOT -type d -name '*.git' | cut -d '/' -f 4- | sort`
+
+max_length=`echo $repos | tr " " "\n" | wc -L`
 
 for repo in $repos; do
-    printf "%-32s %s\n" $repo "git clone ssh://git@$GIT_HOST_HINT/$repo"
+    printf "%-${max_length}s  %s\n" $repo "git clone ssh://git@$GIT_HOST_HINT/$repo"
 done
