@@ -11,11 +11,11 @@ Run
 
 Simplest example:
 
-    $ docker run -d -p 22:22 -e GIT_USER_PASSWORD="[secret]" ubivis-ch/git-server
+    $ docker run -d -p 22:22 -e GIT_USER_PASSWORD="[secret]" ubivisgmbh/git-server
 
 Typical example:
 
-    $ docker run -d -p 2222:22 -v git-config:/etc/git -w git-data:/srv/git -e GIT_AUTHORIZED_KEYS="[secret]" -e GIT_HOST_HINT="example.org:2222" ubivis-ch/git-server
+    $ docker run -d -p 2222:22 -v git-config:/etc/git -w git-data:/srv/git -e GIT_AUTHORIZED_KEYS="[secret]" -e GIT_HOST_HINT="example.org:2222" ubivisgmbh/git-server
 
 Or using Docker Compose (`compose.yaml`):
 
