@@ -1,13 +1,11 @@
-FROM alpine:3.20
-
-ARG GIT_VERSION=2.45.2-r0
+FROM alpine:latest
 
 ARG GIT_REPO_ROOT=/srv/git
 
 RUN apk add --no-cache \
       coreutils \
       dropbear \
-      git=$GIT_VERSION
+      git
 
 RUN adduser git -g git -D && \
     mkdir -p $GIT_REPO_ROOT && \
@@ -26,4 +24,3 @@ COPY git-shell-rel-path /
 EXPOSE 22
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD [ "/usr/sbin/dropbear", "-R", "-g", "-F", "-E", "-j", "-k", "-m", "-c /git-shell-rel-path" ]

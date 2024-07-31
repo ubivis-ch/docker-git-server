@@ -16,4 +16,9 @@ fi
 
 echo "export GIT_HOST_HINT=\"${GIT_HOST_HINT:-<host>[:<port>]}\"" >> /env.sh
 
-exec "$@"
+if [ "$#" -gt 0 ]; then
+    exec "$@"
+else
+    dropbear -R -g -F -E -j -k -m -c /git-shell-rel-path
+fi
+
