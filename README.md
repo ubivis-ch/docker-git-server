@@ -29,7 +29,7 @@ services:
       - 2222:22
     environment:
       - GIT_USER_PASSWORD=[secret]
-      - "GIT_AUTHORIZED_KEYS=[ssh-rsa xxxxx xxx@xxx]\n[ssh-rsa xxxxx xxx@xxx]"
+      - GIT_AUTHORIZED_KEYS=[ssh-rsa xxxxx xxx@xxx]:[ssh-rsa xxxxx xxx@xxx]
       - GIT_HOST_HINT=example.org:2222
     volumes:
       - config:/etc/git
@@ -46,7 +46,7 @@ Configuration (environment variables)
 At least one of the two environment variables below need to be set in order for it to work:
 
 * `GIT_USER_PASSWORD` - Sets a password for the `git` user.
-* `GIT_AUTHORIZED_KEYS` - Sets a number of SSH public keys (separated by the newline character `\n`).
+* `GIT_AUTHORIZED_KEYS` - Sets a number of SSH public keys (separated by colon).
 
 Optionally one can set the following environment variable (useful espcially if the server runs behind a reverse proxy.
 
@@ -81,7 +81,7 @@ There is also a administration interface that can be accessed over SSH (as a res
       delete <repo path>  - Delete a repository
       exit                - Exit
       help                - Show available commands
-      list                - List all repostories
+      list                - List all repositories
     git> 
 
 Notes

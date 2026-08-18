@@ -8,7 +8,7 @@ touch /home/git/.ssh/authorized_keys
 chown git:git /home/git/.ssh/authorized_keys
 chmod 600 /home/git/.ssh/authorized_keys
 
-echo "${GIT_AUTHORIZED_KEYS:-}" > /home/git/.ssh/authorized_keys
+echo "${GIT_AUTHORIZED_KEYS}" | tr ':' '\n' > /home/git/.ssh/authorized_keys
 
 if [ ! -z "${GIT_USER_PASSWORD}" ]; then
     echo "git:${GIT_USER_PASSWORD}" | chpasswd
